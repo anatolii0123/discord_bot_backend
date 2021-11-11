@@ -1,0 +1,35 @@
+{
+    "name": "vexerbe",
+    "version": "1.0.0",
+    "description": "back-end for dashboard vexer.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "engines": {
+        "node": "16.4.0"
+    },
+    "keywords": [
+        "example",
+        "heroku"
+    ],
+    "author": "Helutu",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.21.4",
+        "connect-mongo": "^4.5.0",
+        "cors": "^2.8.5",
+        "discord.js": "^13.3.1",
+        "express": "^4.17.1",
+        "express-session": "^1.17.2",
+        "glob": "^7.2.0",
+        "mongoose": "^6.0.4",
+        "node-fetch": "^3.0.0",
+        "passport": "^0.4.1",
+        "passport-discord": "^0.1.4",
+        "passport-discord.js": "^0.0.6",
+        "request": "^2.88.2"
+    }
+}
