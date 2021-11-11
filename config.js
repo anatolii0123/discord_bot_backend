@@ -9,5 +9,5 @@ module.exports = {
     clientSecret: "8V7ZVnC3ImpLWiE6B7O-ZvsowWytuKdn", // client secret from bot
     callbackurl: "/api/auth/discord/redirect", // callback
     port: 8000, // port
-    FRONDEND_URL: "http://guardian-discord-bot-frontend.herokuapp.com" // Front-End URL
+    FRONDEND_URL: "https://discord-bot-frontend.herokuapp.com" // Front-End URL
 }
