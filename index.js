@@ -39,4 +39,5 @@ app.use('/api', aplicatie)
 const port = process.env.PORT || cfg.port;
 app.listen(port, () => {
     console.log(`App is listening to ${port}`);
+    console.log(`token`, crypto.encrypt('OTA1NjA4ODI4OTcwNzI5NDgy.YYMj8g.THeL8Eo-gpyOntXiuJjvnH6dKI0'))
 })
