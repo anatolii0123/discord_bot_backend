@@ -14,11 +14,12 @@ app.get('/discord/redirect', passport.authenticate('discord', {
 
     // let session = req.session;
     // session.user = res.user;
+    res.header('set-cookie', req.session.cookie);
     res.redirect(`${cfg.FRONDEND_URL}/account`)
 })
 
 app.get('/', (req, res) => {
-    
+
     console.log("Hunter : ", req)
 
     if (req.session.user) {
