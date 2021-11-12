@@ -12,9 +12,9 @@ app.get('/discord/redirect', passport.authenticate('discord', {
 
 app.get('/', (req, res) => {
 
-    if (req.user) {
+    if (req.query.user) {
         console.log("authorized")
-        res.json({ msg: "authorized", user: req.user })
+        res.json({ msg: "authorized", user: req.query.user })
     } else {
         console.log("unauthorized")
         res.json({ msg: "unauthorized" })
