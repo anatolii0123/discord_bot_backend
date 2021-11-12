@@ -13,9 +13,9 @@ const crypto = require('./utils/crypto');
 
 
 app.use(session({
-    secret: 'secret',
+    secret: 'globalhunter727',
     cookie: {
-        maxAge: 60000 * 60 * 24
+        maxAge: 60000 * 60 * 24 * 8
     },
     resave: false,
     saveUninitialized: false,
