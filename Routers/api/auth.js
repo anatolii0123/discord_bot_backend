@@ -7,23 +7,12 @@ app.get('/discord', passport.authenticate('discord'));
 app.get('/discord/redirect', passport.authenticate('discord', {
     failureRedirect: `${cfg.FRONDEND_URL}/`
 }), (req, res) => {
-    // const client = require('../../bot/src')
-    // console.log("session", req)
-    // console.log("res", res)
-    // res.cookie('user', '2323234')
-
-    // let session = req.session;
-    // session.user = res.user;
-
-    res.cookie('user', '2222', { httpOnly: true })
-    res.redirect(302, `${cfg.FRONDEND_URL}/account`)
+    res.redirect(`${cfg.FRONDEND_URL}/account?user=2222`)
 })
 
 app.get('/', (req, res) => {
 
-    console.log("Hunter : ", req)
-
-    if (req.session.user) {
+    if (req.user) {
         console.log("authorized")
         res.json({ msg: "authorized", user: req.user })
     } else {
