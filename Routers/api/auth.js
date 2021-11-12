@@ -11,13 +11,16 @@ app.get('/discord/redirect', passport.authenticate('discord', {
     // console.log("session", req)
     // console.log("res", res)
     // res.cookie('user', '2323234')
-    console.log("Hunter : ", req)
-    req.session.user = res.user
+
+    // let session = req.session;
+    // session.user = res.user;
     res.redirect(`${cfg.FRONDEND_URL}/account`)
 })
 
 app.get('/', (req, res) => {
-    console.log("Req", req);
+    
+    console.log("Hunter : ", req)
+
     if (req.session.user) {
         console.log("authorized")
         res.json({ msg: "authorized", user: req.user })
