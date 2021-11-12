@@ -15,6 +15,7 @@ const crypto = require('./utils/crypto');
 app.use(session({
     secret: 'globalhunter727',
     cookie: {
+        secure: process.env.NODE_ENV == "production" ? true : false ,
         maxAge: 60000 * 60 * 24
     },
     resave: true,
