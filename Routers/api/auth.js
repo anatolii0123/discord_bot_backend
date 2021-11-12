@@ -15,8 +15,8 @@ app.get('/discord/redirect', passport.authenticate('discord', {
     // let session = req.session;
     // session.user = res.user;
 
-    res.cookie('user', '2222', { httpOnly: true, domain: "http://discord-bot-backend-app.herokuapp.com"})
-    res.redirect(`${cfg.FRONDEND_URL}/account`)
+    res.cookie('user', '2222', { httpOnly: true })
+    res.redirect(302, `${cfg.FRONDEND_URL}/account`)
 })
 
 app.get('/', (req, res) => {

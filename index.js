@@ -13,15 +13,12 @@ const crypto = require('./utils/crypto');
 
 
 app.use(session({
-    secret: 'globalhunter727',
+    secret: 'secret',
     cookie: {
-        httpOnly: false,
-        secure: false ,
-        sameSite: false,
         maxAge: 60000 * 60 * 24
     },
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     store: MongoDbStore.create({
         mongoUrl: cfg.database
     })
