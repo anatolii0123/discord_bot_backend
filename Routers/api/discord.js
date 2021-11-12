@@ -48,12 +48,13 @@ app.get("/", (req, res) => {
   res.send("good");
 });
 app.get("/guilds", async (req, res) => {
-  console.log("isUser", req.user)
-  if (req.user) {
-    const user = await User.findOne({ discordId: req.user.discordId });
+  
+  const queryUser = JSON.parse(req.query.user);
+  if (queryUser) {
+    const user = await User.findOne({ discordId: queryUser.discordId });
     const uguilds = user.guilds;
     const bguilds = await bGetGuilds();
-    console.log("user", req.user, "uguilds", uguilds, "bguilds", bguilds)
+   
     if (user) {
       let comservs = uguilds.filter((userguild) =>
         bguilds.find(
