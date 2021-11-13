@@ -25,10 +25,10 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(cors({
-//     origin: ["http://discord-bot-frontend.herokuapp.com"],
-//     credentials: true
-// }))
+app.use(cors({
+    origin: ["https://discord-bot-backend-app.herokuapp.com"],
+    credentials: true
+}))
 // app.use(cors({
 //     origin: "*",
 // }))

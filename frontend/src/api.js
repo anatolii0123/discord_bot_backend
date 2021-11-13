@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const BackEnd_URL = 'http://discord-bot-backend-app.herokuapp.com';
-export const FrontEnd_URL = 'http://discord-bot-backend-app.herokuapp.com'
+export const BackEnd_URL = 'https://discord-bot-backend-app.herokuapp.com';
+export const FrontEnd_URL = 'https://discord-bot-backend-app.herokuapp.com'
 export const Name = 'Vexer';
 
 export function getAuth(user) {
