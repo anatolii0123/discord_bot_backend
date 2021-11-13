@@ -17,10 +17,7 @@ export default function Dashboard() {
 
   const history = useHistory();
   useEffect(() => {
-    const param = queryString.parse(decodeURIComponent(history.location.search));
-    console.log("param", param)
-    param.user = JSON.parse(param.user)
-    getAuth(param.user).then((res) => {
+    getAuth().then((res) => {
       setAcces(res.data.msg);
       if (acces === "authorized") {
         setUsername(res.data.user.discordTag);
@@ -32,11 +29,8 @@ export default function Dashboard() {
   }, [acces]);
   useEffect(() => {
     if (acces != "authorized") {     
-      const param = queryString.parse(decodeURIComponent(history.location.search));
-      param.user = JSON.parse(param.user)
-    getGuilds(param.user).then((res) => {
+    getGuilds().then((res) => {
         if (res.data.msg === "unauthorized") return (window.location.href =`${BackEnd_URL}/api/auth/discord/`);
-        console.log(res.data.msg)
         setGuilds(res.data.permincom);
         setComguilds(res.data.comservs);
         setTimeout(() => {

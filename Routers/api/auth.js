@@ -7,13 +7,13 @@ app.get('/discord', passport.authenticate('discord'));
 app.get('/discord/redirect', passport.authenticate('discord', {
     failureRedirect: `${cfg.FRONDEND_URL}/`
 }), (req, res) => {
-    res.redirect(`${cfg.FRONDEND_URL}/account?user=${encodeURIComponent(JSON.stringify(req.user))}`)
+    res.redirect(`${cfg.FRONDEND_URL}/account`)
 })
 
 app.get('/', (req, res) => {
-    if (req.query.user) {
+    if (req.user) {
         console.log("authorized")
-        res.json({ msg: "authorized", user: JSON.parse(decodeURIComponent(req.query.user)) })
+        res.json({ msg: "authorized", user: req.user })
     } else {
         console.log("unauthorized")
         res.json({ msg: "unauthorized" })
