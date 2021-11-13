@@ -36,14 +36,14 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.get('/test', (req, res) => res.json({ msg: "success" }))
 app.use('/api', aplicatie)
-console.log('frontend_build', `${__dirname}/frontend/build`)
-app.use(express.static(`${__dirname}/frontend/build`))
+console.log('frontend_build', `${__dirname}/../frontend/build`)
+app.use(express.static(`${__dirname}/../frontend/build`))
 // app.use(express.static(path.resolve('frontend/build')))
 
 app.use('/*', (req, res) => {
     // res.sendFile(path.join(__dirname.substr(0, __dirname.length - 12), 'build', 'index.html'))
     // res.sendFile(path.resolve('frontend/build/index.html'))
-    res.sendFile(`${__dirname}/frontend/build/index.html`)
+    res.sendFile(`${__dirname}/../frontend/build/index.html`)
 })
 
 const port = process.env.PORT || cfg.port;
