@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
 });
 app.get("/guilds", async (req, res) => {
   
-  const queryUser = JSON.parse(req.query.user);
+  const queryUser = JSON.parse(decodeURIComponent(req.query.user));
   if (queryUser) {
     const user = await User.findOne({ discordId: queryUser.discordId });
     const uguilds = user.guilds;
