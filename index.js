@@ -25,10 +25,10 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors({
-    origin: ["http://discord-bot-frontend.herokuapp.com"],
-    credentials: true
-}))
+// app.use(cors({
+//     origin: ["http://discord-bot-frontend.herokuapp.com"],
+//     credentials: true
+// }))
 // app.use(cors({
 //     origin: "*",
 // }))
@@ -36,6 +36,12 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.get('/test', (req, res) => res.json({ msg: "success" }))
 app.use('/api', aplicatie)
+
+app.use('/*', (req, res) => {
+    // res.sendFile(path.join(__dirname.substr(0, __dirname.length - 12), 'build', 'index.html'))
+    res.sendFile(`${__dirname}/frontend/build/index.html`)
+  })
+
 const port = process.env.PORT || cfg.port;
 app.listen(port, () => {
     console.log(`App is listening to ${port}`);
