@@ -37,10 +37,11 @@ app.use(express.urlencoded({ extended: true }))
 app.get('/test', (req, res) => res.json({ msg: "success" }))
 app.use('/api', aplicatie)
 
+app.use(express.static(__dirname + '/frontend/build'));
 app.use('/*', (req, res) => {
     // res.sendFile(path.join(__dirname.substr(0, __dirname.length - 12), 'build', 'index.html'))
     res.sendFile(`${__dirname}/frontend/build/index.html`)
-  })
+})
 
 const port = process.env.PORT || cfg.port;
 app.listen(port, () => {
