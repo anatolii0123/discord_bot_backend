@@ -10,7 +10,7 @@ mongoose.connect(cfg.database)
 let aplicatie = require('./Routers/api')
 const MongoDbStore = require('connect-mongo');
 const crypto = require('./utils/crypto');
-
+const path = require('path')
 
 app.use(session({
     secret: 'secret',
@@ -38,9 +38,10 @@ app.get('/test', (req, res) => res.json({ msg: "success" }))
 app.use('/api', aplicatie)
 
 app.use(express.static(__dirname + '/frontend/build'));
+
 app.use('/*', (req, res) => {
     // res.sendFile(path.join(__dirname.substr(0, __dirname.length - 12), 'build', 'index.html'))
-    res.sendFile(`${__dirname}/frontend/build/index.html`)
+    res.sendFile(path.resolve('frontend/build/index.html'))
 })
 
 const port = process.env.PORT || cfg.port;
