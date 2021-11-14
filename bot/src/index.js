@@ -5,7 +5,7 @@ const { Client, Collection, Intents } = require('discord.js');
 // const { dirname } = require('path');
 // const { promisify } = require("util");
 const crypto = require('../../utils/crypto');
-// const config = require('../../config')
+const config = require('../../config')
 // const { connect } = require('./connect')
 
 // const globPromise = promisify(glob);
