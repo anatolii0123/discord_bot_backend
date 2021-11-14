@@ -7,6 +7,7 @@ const { Client, Collection, Intents } = require('discord.js');
 const crypto = require('../../utils/crypto');
 // const config = require('../../config')
 // const { connect } = require('./connect')
+
 // const globPromise = promisify(glob);
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
