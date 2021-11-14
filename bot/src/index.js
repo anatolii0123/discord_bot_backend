@@ -12,6 +12,11 @@ const config = require('../../config')
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 console.log("token", crypto.decrypt(config.token))
+
+client.on('ready', () => {
+  console.log(`Client Test ${client.user.tag} is logged in!`);
+});
+
 // module.exports = client;
 // client.commands = new Collection();
 
