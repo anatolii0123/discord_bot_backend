@@ -1,8 +1,10 @@
 module.exports = {
     token:  {
-        iv: '917a1d810312664053cbd77f7693f843',
-        content: 'b0bae7d08e7712290c02212c7d4af17a2251eae986e2c09da3c181c3dad017969933df248738bdeb31983f6fe28603d69fde0d2b75f0a8c8c28b1b'
+        iv:'c46ffbfc969c608d8babda3fadcd90ee',
+        content:'61d1d3b87ddf498f5dcde3c8217481c4ecf75591bec7a2fcd88ab4e2fe7a7f2c830d6958cde94197e075cd6166f76ba60fa0e1e73629f5f5f8d726'
     }, // crypto token from bot
+
+
     prefix: "v-", // default prefix
     database: "mongodb+srv://guardian:ASDFasdf1234@cluster0.i86ba.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", // link from mongodb
     clientId: "905608828970729482", //client id from bot
