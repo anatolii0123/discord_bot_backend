@@ -17,6 +17,12 @@ client.on('ready', () => {
   console.log(`Client Test ${client.user.tag} is logged in!`);
 });
 
+client.on('messageCreate', (message) => {
+  if (message.content.toLowerCase().includes('fudge') || message.content.toLowerCase().includes('pudding')) {
+    message.channel.send('Such language is prohibited!');
+  }
+});
+
 // module.exports = client;
 // client.commands = new Collection();
 
