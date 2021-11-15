@@ -3,13 +3,14 @@ const passport = require("passport");
 const User = require("../../Models/User");
 const Guild = require("../../Models/GuildSchema");
 const config = require("../../config");
+const crypto = require('../../utils/crypto');
 const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 async function bGetGuilds() {
   const res = await fetch("http://discord.com/api/v9/users/@me/guilds", {
     method: "GET",
     headers: {
-      Authorization: `Bot ${config.token}`,
+      Authorization: `Bot ${crypto.decrypt(config.token)}`,
     },
   });
   return res.json();
@@ -18,7 +19,7 @@ async function getMembers(id) {
   const res = await fetch(`http://discord.com/api/v9/guilds/${id}/members?limit=1000`, {
     method: "GET",
     headers: {
-      Authorization: `Bot ${config.token}`,
+      Authorization: `Bot ${crypto.decrypt(config.token)}`,
     },
   });
   return res.json();
@@ -27,7 +28,7 @@ async function getDetailsServer(id) {
   const res = await fetch(`http://discord.com/api/v9/guilds/${id}`, {
     method: "GET",
     headers: {
-      Authorization: `Bot ${config.token}`,
+      Authorization: `Bot ${crypto.decrypt(config.token)}`,
     },
   });
 
@@ -37,7 +38,7 @@ async function getChannels(id) {
   const res = await fetch(`http://discord.com/api/v9/guilds/${id}/channels`, {
     method: "GET",
     headers: {
-      Authorization: `Bot ${config.token}`,
+      Authorization: `Bot ${crypto.decrypt(config.token)}`,
     },
   });
   return res.json();
