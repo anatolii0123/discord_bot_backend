@@ -53,8 +53,11 @@ app.get("/guilds", async (req, res) => {
   if (req.user) {
     console.log("bguilds user", req.user)
     const user = await User.findOne({ discordId: req.user.discordId });
+    console.log("discord user", user)
     const uguilds = user.guilds;
+    console.log("uguilds value", uguilds)
     const bguilds = await bGetGuilds();
+    console.log("bguilds value", bguilds)
 
     if (user) {
       let comservs = uguilds.filter((userguild) =>
