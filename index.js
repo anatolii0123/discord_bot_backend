@@ -12,7 +12,6 @@ const MongoDbStore = require('connect-mongo');
 const crypto = require('./utils/crypto');
 // const path = require('path')
 
-
 app.use(session({
     secret: 'secret',
     cookie: {

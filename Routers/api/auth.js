@@ -9,7 +9,7 @@ app.get('/discord/redirect', passport.authenticate('discord', {
 }), (req, res) => {
     // require("../../bot/src/index")
 
-    res.redirect(`${cfg.FRONDEND_URL}/account`)
+    res.redirect(`${cfg.FRONDEND_URL}`)
 })
 
 app.get('/', (req, res) => {
