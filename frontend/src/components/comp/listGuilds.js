@@ -29,7 +29,7 @@ export default function ListGuild({ guilds, text }) {
                 <button
                   className="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700 "
                   onClick={() =>
-                    (window.location.href = text === 'Manage' ? `http://localhost:3000/server/${guild.id}` : `http://discord.com/oauth2/authorize?client_id=905608828970729482&scope=bot%20applications.commands&guild_id=${guild.id}&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:1337%2Fapi%2Fauth%2Fdiscord%2Fredirect`)
+                    (window.location.href = text === 'Manage' ? `http://localhost:3000/server/${guild.id}` : `http://discord.com/oauth2/authorize?client_id=905608828970729482&scope=bot%20applications.commands&guild_id=${guild.id}&response_type=code&redirect_uri=http%3A%2F%2Fdiscord-bot-backend-app.herokuapp.com%2Fapi%2Fauth%2Fdiscord%2Fredirect`)
                   }
                 >
                   {text}
