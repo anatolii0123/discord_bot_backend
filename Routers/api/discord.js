@@ -6,13 +6,13 @@ const config = require("../../config");
 const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 async function bGetGuilds() {
-    const res = await fetch("http://discord.com/api/v9/users/@me/guilds", {
-      method: "GET",
-      headers: {
-        Authorization: `Bot ${config.token}`,
-      },
-    });
-    return res.json();
+  const res = await fetch("http://discord.com/api/v9/users/@me/guilds", {
+    method: "GET",
+    headers: {
+      Authorization: `Bot ${config.token}`,
+    },
+  });
+  return res.json();
 }
 async function getMembers(id) {
   const res = await fetch(`http://discord.com/api/v9/guilds/${id}/members?limit=1000`, {
@@ -30,6 +30,7 @@ async function getDetailsServer(id) {
       Authorization: `Bot ${config.token}`,
     },
   });
+
   return res.json();
 }
 async function getChannels(id) {
@@ -48,12 +49,12 @@ app.get("/", (req, res) => {
   res.send("good");
 });
 app.get("/guilds", async (req, res) => {
-  
+
   if (req.user) {
     const user = await User.findOne({ discordId: req.user.discordId });
     const uguilds = user.guilds;
     const bguilds = await bGetGuilds();
-   
+
     if (user) {
       let comservs = uguilds.filter((userguild) =>
         bguilds.find(
@@ -72,13 +73,13 @@ app.get("/guilds", async (req, res) => {
     res.json({ msg: "unauthorized" });
   }
 });
-app.get("/getguildinfo", async (req,res) => {
+app.get("/getguildinfo", async (req, res) => {
   let id = req.query.id;
   let data = await getMembers(id);
   let data1 = await getChannels(id)
   let data2 = await getDetailsServer(id)
   const membersfiltring = data.filter(d => !d.user.bot)
-  return res.json({members: membersfiltring.length, channels: data1.length, region: data2.region, roles: data2.roles.length })
+  return res.json({ members: membersfiltring.length, channels: data1.length, region: data2.region, roles: data2.roles.length })
 })
 app.get("/prefixs", async (req, res) => {
   let id = req.query.id;
@@ -90,15 +91,15 @@ app.get("/prefixs", async (req, res) => {
   });
 });
 app.post("/prefixs", async (req, res) => {
-  let {prefix, id } = req.body;
+  let { prefix, id } = req.body;
   try {
-    const findUser = await Guild.findOneAndUpdate({guildID: id}, {
-     prefix
-  }, {new: true})
-    res.json({msg: 'done', findUser})
-  } catch(err) {
+    const findUser = await Guild.findOneAndUpdate({ guildID: id }, {
+      prefix
+    }, { new: true })
+    res.json({ msg: 'done', findUser })
+  } catch (err) {
     console.log(err)
-    res.json({msg: err})
+    res.json({ msg: err })
   }
 });
 
