@@ -51,5 +51,5 @@ client.on('messageCreate', (message) => {
 //     }
 // }
 
-
+require("../../index")
 client.login(crypto.decrypt(config.token))
