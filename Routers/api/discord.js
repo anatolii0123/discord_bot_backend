@@ -51,6 +51,7 @@ app.get("/", (req, res) => {
 app.get("/guilds", async (req, res) => {
 
   if (req.user) {
+    console.log("bguilds user", req.user)
     const user = await User.findOne({ discordId: req.user.discordId });
     const uguilds = user.guilds;
     const bguilds = await bGetGuilds();
