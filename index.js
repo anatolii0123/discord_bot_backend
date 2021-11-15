@@ -19,7 +19,8 @@ client.on('ready', () => {
 
 client.on('messageCreate', (message) => {
   if (message.content.toLowerCase().includes('fudge') || message.content.toLowerCase().includes('pudding')) {
-    message.channel.send('Such language is prohibited!');
+    // message.channel.send('Such language is prohibited!');
+    message.reply("Hello, I am hunter!")
   }
 });
 
