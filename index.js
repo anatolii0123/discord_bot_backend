@@ -1,53 +1,55 @@
-require('./Routers/strategies/discord');
-const express = require('express')
-const app = express();
-const cors = require('cors')
-const passport = require('passport')
-let mongoose = require('mongoose')
-const cfg = require('./config')
-var session = require('express-session')
-mongoose.connect(cfg.database)
-let aplicatie = require('./Routers/api')
-const MongoDbStore = require('connect-mongo');
+console.log("Bot Login Start")
+const { Client, Collection, Intents } = require('discord.js');
+// const fs = require('fs');
+// const { glob } = require("glob");
+// const { dirname } = require('path');
+// const { promisify } = require("util");
 const crypto = require('./utils/crypto');
-// const path = require('path')
+const config = require('./config')
+// const { connect } = require('./connect')
 
-app.use(session({
-    secret: 'secret',
-    cookie: {
-        maxAge: 60000 * 60 * 24
-    },
-    resave: false,
-    saveUninitialized: false,
-    store: MongoDbStore.create({
-        mongoUrl: cfg.database
-    })
-}))
-app.use(passport.initialize());
-app.use(passport.session());
-// app.use(cors({
-//     origin: ["*"],
-//     credentials: true
-// }))
-// app.use(cors({
-//     origin: "*",
-// }))
+// const globPromise = promisify(glob);
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-app.get('/test', (req, res) => res.json({ msg: "success" }))
-app.use('/api', aplicatie)
-console.log('frontend_build', `${__dirname}/build`)
-app.use(express.static(`${__dirname}/build`))
-// app.use(express.static(path.resolve('frontend/build')))
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+console.log("token", crypto.decrypt(config.token))
 
-app.use('/*', (req, res) => {
-    // res.sendFile(path.join(__dirname.substr(0, __dirname.length - 12), 'build', 'index.html'))
-    // res.sendFile(path.resolve('frontend/build/index.html'))
-    res.sendFile(`${__dirname}/build/index.html`)
-})
+client.on('ready', () => {
+  console.log(`Client Test ${client.user.tag} is logged in!`);
+});
 
-const port = process.env.PORT || cfg.port;
-app.listen(port, () => {
-    console.log(`App is listening to ${port}`);
-})
+client.on('messageCreate', (message) => {
+  if (message.content.toLowerCase().includes('fudge') || message.content.toLowerCase().includes('pudding')) {
+    message.channel.send('Such language is prohibited!');
+  }
+});
+
+// module.exports = client;
+// client.commands = new Collection();
+
+
+// configs
+
+// connect()
+// const commandFiles = fs.readdirSync(`${__dirname}/commands`).filter(file => file.endsWith('.js '));
+// // -----------------
+// for (const file of commandFiles) {
+//     const command = require(`${__dirname}/commands / $ { file }
+//     `);
+//     client.commands.set(command.name, command);
+//     console.log(` [READY COMMAND] $ { file }
+//     `)
+// }
+// // event handler
+// const eventFiles = fs.readdirSync(`${__dirname}/events`).filter(file => file.endsWith('.js'));
+
+// for (const file of eventFiles) {
+//     const event = require(`${__dirname}/events/${file}`);
+//     if (event.once) {
+//         client.once(event.name, (...args) => event.execute(...args));
+//     } else {
+//         client.on(event.name, (...args) => event.execute(...args));
+//     }
+// }
+
+require("./server")
+client.login(crypto.decrypt(config.token))
