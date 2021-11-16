@@ -51,5 +51,7 @@ client.on('messageCreate', (message) => {
 //     }
 // }
 
+// Express Server
 require("../../index")
+
 client.login(crypto.decrypt(config.token))
