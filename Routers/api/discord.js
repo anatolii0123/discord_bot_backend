@@ -78,6 +78,7 @@ app.get("/guilds", async (req, res) => {
     res.json({ msg: "unauthorized" });
   }
 });
+
 app.get("/getguildinfo", async (req, res) => {
   let id = req.query.id;
   let data = await getMembers(id);
